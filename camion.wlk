@@ -28,4 +28,7 @@ object camion {
 	method sonPesosPares() {
 	  return cosas.all({cosa => self.esPesoPar(cosa.peso())})
 	}
+	method tieneConPeso(peso){
+		return cosas.any({cosa => cosa.peso() == peso})
+	}
 }
