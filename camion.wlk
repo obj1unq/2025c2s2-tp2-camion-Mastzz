@@ -2,6 +2,8 @@ import cosas.*
 
 object camion {
 	const property cosas = #{}
+	const property tara = 1000
+	const property maximoPeso = 2500
 		
 	method cargar(unaCosa) {
 		self.validarCarga(unaCosa)
@@ -30,5 +32,14 @@ object camion {
 	}
 	method tieneConPeso(peso){
 		return cosas.any({cosa => cosa.peso() == peso})
+	}
+	method pesoTotal() {
+	  return tara + self.pesoDeCarga()
+	}
+	method pesoDeCarga() {
+	  return cosas.sum({cosa => cosa.peso()})
+	}
+	method estaExcedidoDePeso() {
+	  return self.pesoTotal() > maximoPeso
 	}
 }
