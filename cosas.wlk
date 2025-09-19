@@ -7,7 +7,9 @@ object arenaGranel {
 	method nivelPeligrosidad() { return 1}
 }
 object bumblebee {
-	var property transformado = false
+	var transformado = false
+	method modoAuto(){transformado = true}
+	method modoRobot() {transformado = false}
 	method peso() {return 800}
 	method nivelPeligrosidad(){return if (transformado) 15 else 30}
 }
@@ -18,7 +20,9 @@ object paqueteLadrillos {
 	method nivelPeligrosidad(){return 2}
 }
 object bateriaAntiarea {
-	var property misiles = false
+	var misiles = false
+	method cargada(){misiles=true}
+	method descargada(){misiles=false}
 	method peso(){return if (misiles) 300 else 200}
 	method nivelPeligrosidad(){return if (misiles) 100 else 0}
 }
