@@ -21,4 +21,11 @@ object camion {
 			self.error("No puedo descargar " + unaCosa + " no hay cargada!")
 		}
 	}
+	// Modularizo y para no tener tantos mensajes encadenados
+	method esPesoPar(peso){
+		return peso.even()
+	}
+	method sonPesosPares() {
+	  return cosas.all({cosa => self.esPesoPar(cosa.peso())})
+	}
 }
