@@ -51,4 +51,11 @@ object camion {
 	method cosasConMasNivelQue(cosa){
 		return self.cosasConMasNivelDe(cosa.nivelPeligrosidad())
 	}
+	method puedeCircularEnRuta(nivelPeligrosidad){
+		return !self.estaExcedidoDePeso() && !self.hayAlgunoConMasNivel(nivelPeligrosidad)
+	}
+	// podria usar un predicate para especificamente consultar esto pero prefiero reutilizar código
+	method hayAlgunoConMasNivel(nivelPeligrosidad) {
+	  return self.cosasConMasNivelDe(nivelPeligrosidad).size() > 0
+	}
 }
