@@ -57,4 +57,7 @@ object camion {
 	method hayAlgunoConMasNivel(nivelPeligrosidad) {
 	  return self.cosasConMasNivelDe(nivelPeligrosidad).size() > 0
 	}
+	method tieneAlgoEntreY(peso1, peso2) {
+	  return cosas.any({cosa => (cosa.peso() > peso1 && cosa.peso() < peso2)})
+	}
 }
