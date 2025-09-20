@@ -30,4 +30,32 @@ object residuosRadiactivos {
 	var property peso = 0
 	method nivelPeligrosidad(){return 200}
 }
+object contenedorPortuario {
+	const property cosas = #{}
+	const property neto = 100
+	method agregarCosa(unaCosa){
+		cosas.add(unaCosa)
+	}
+	method pesoCosas() {
+	  return cosas.sum({cosa => cosa.peso()})
+	}
+	method peso() {
+	  return neto + self.pesoCosas()
+	}
+	method cosaConMasNivelDePeligrosidad() {
+	  return cosas.max({cosa => cosa.nivelPeligrosidad()})
+	}
+	method nivelPeligrosidad(){
+		return if (!cosas.isEmpty()) self.cosaConMasNivelDePeligrosidad().nivelPeligrosidad() else 0
+	}
+}
+object embalajeSeguridad {
+	var property cosa = null
+	method peso() {
+	  return cosa.peso()
+	}
+	method nivelPeligrosidad(){
+		return cosa.nivelPeligrosidad() / 2
+	}
+}
 

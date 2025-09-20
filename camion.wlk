@@ -1,5 +1,4 @@
 import cosas.*
-
 object camion {
 	const property cosas = #{}
 	const property tara = 1000
