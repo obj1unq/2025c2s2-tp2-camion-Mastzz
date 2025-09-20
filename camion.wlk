@@ -1,5 +1,5 @@
 import cosas.*
-import almacen.*
+import transporte.*
 
 object camion {
 	const property cosas = #{}
@@ -78,7 +78,12 @@ object camion {
 		destino.estibar(cosas)
 		cosas.clear()
 	}
-	method transportar(destino, camion) {
-		
+	method transportar(destino, camino) {
+		if (camino.puedeTransitar(self)){
+			self.guardarEnDestino(destino)
+		}
+	}
+	method aprobeElTp(caso){
+		return caso
 	}
 }
