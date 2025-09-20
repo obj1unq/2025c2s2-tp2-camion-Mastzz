@@ -45,4 +45,10 @@ object camion {
 	method cosaConPeligrosidad(nivelPeligrosidad) {
 	  return cosas.find({cosa => cosa.nivelPeligrosidad() == nivelPeligrosidad})
 	}
+	method cosasConMasNivelDe(nivel) {
+	  return cosas.filter({cosa => cosa.nivelPeligrosidad() > nivel})
+	}
+	method cosasConMasNivelQue(cosa){
+		return self.cosasConMasNivelDe(cosa.nivelPeligrosidad())
+	}
 }
