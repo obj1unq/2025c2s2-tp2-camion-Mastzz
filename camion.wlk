@@ -63,4 +63,7 @@ object camion {
 	method cosaMasPesada() {
 	  return cosas.max({cosa => cosa.peso()})
 	}
+	method todosLosPesosCosas() {
+	  return cosas.map({cosa => cosa.peso()})
+	}
 }
