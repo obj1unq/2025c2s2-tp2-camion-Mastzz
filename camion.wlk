@@ -1,4 +1,6 @@
 import cosas.*
+import almacen.*
+
 object camion {
 	const property cosas = #{}
 	const property tara = 1000
@@ -71,5 +73,12 @@ object camion {
 	}
 	method accidente(){
 		return cosas.forEach({cosa => cosa.accidentar()})
+	}
+	method guardarEnDestino(destino){
+		destino.estibar(cosas)
+		cosas.clear()
+	}
+	method transportar(destino, camion) {
+		
 	}
 }
