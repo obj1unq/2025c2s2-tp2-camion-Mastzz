@@ -1,10 +1,12 @@
 object knightRider {
 	method peso() { return 500 }
 	method nivelPeligrosidad() { return 10 }
+	method bulto(){return 1}
 }
 object arenaGranel {
 	var property peso = 0
 	method nivelPeligrosidad() { return 1}
+	method bulto(){return 1}
 }
 object bumblebee {
 	var transformado = false
@@ -12,12 +14,16 @@ object bumblebee {
 	method modoRobot() {transformado = false}
 	method peso() {return 800}
 	method nivelPeligrosidad(){return if (transformado) 15 else 30}
+	method bulto(){return 2}
 }
 object paqueteLadrillos {
 	var property cantidad = 0
 	const property pesoLadrillo=2
 	method peso(){return cantidad * pesoLadrillo}
 	method nivelPeligrosidad(){return 2}
+	method bulto(){
+		return if (cantidad <= 100) 1 else if (cantidad >= 101 && cantidad <= 300) 2 else 3
+	}
 }
 object bateriaAntiarea {
 	var misiles = false
@@ -25,10 +31,12 @@ object bateriaAntiarea {
 	method descargada(){misiles=false}
 	method peso(){return if (misiles) 300 else 200}
 	method nivelPeligrosidad(){return if (misiles) 100 else 0}
+	method bulto(){return if (misiles) 2 else 1}
 }
 object residuosRadiactivos {
 	var property peso = 0
 	method nivelPeligrosidad(){return 200}
+	method bulto(){return 1}
 }
 object contenedorPortuario {
 	const property cosas = #{}
@@ -48,6 +56,9 @@ object contenedorPortuario {
 	method nivelPeligrosidad(){
 		return if (!cosas.isEmpty()) self.cosaConMasNivelDePeligrosidad().nivelPeligrosidad() else 0
 	}
+	method bulto(){
+		return cosas.sum({cosa => cosa.bulto()}) + 1
+	}
 }
 object embalajeSeguridad {
 	var property cosa = null
@@ -57,5 +68,6 @@ object embalajeSeguridad {
 	method nivelPeligrosidad(){
 		return cosa.nivelPeligrosidad() / 2
 	}
+	method bulto(){return 2}
 }
 
